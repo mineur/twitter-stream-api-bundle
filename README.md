@@ -19,7 +19,7 @@ class AppKernel extends Kernel
     {
         $bundles = [
             // ...
-            new Mineur\TwitterStreamApiBundle(),
+            new Mineur\TwitterStreamApiBundle\TwitterStreamApiBundle(),
         ];
     }
 }

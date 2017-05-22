@@ -2,9 +2,9 @@
 
 namespace Mineur\TwitterStreamApiBundle\DependencyInjection;
 
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use Symfony\Component\HttpKernel\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 
 /**
@@ -38,5 +38,13 @@ class TwitterStreamApiExtension extends ConfigurableExtension
         );
 
         $loader->load('services.yml');
+    }
+
+    /**
+     * @return string
+     */
+    public function getAlias()
+    {
+        return 'twitter_stream_api';
     }
 }

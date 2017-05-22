@@ -1,6 +1,6 @@
 <?php
 
-namespace DependencyInjection;
+namespace Mineur\TwitterStreamApiBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -27,16 +27,20 @@ class TwitterStreamApiConfiguration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('consumer_key')
                             ->isRequired()
-                            ->end()
+                            ->cannotBeEmpty()
+                        ->end()
                         ->scalarNode('consumer_secret')
                             ->isRequired()
-                            ->end()
+                            ->cannotBeEmpty()
+                        ->end()
                         ->scalarNode('access_token')
                             ->isRequired()
-                            ->end()
+                            ->cannotBeEmpty()
+                        ->end()
                         ->scalarNode('access_token_secret')
                             ->isRequired()
-                            ->end()
+                            ->cannotBeEmpty()
+                        ->end()
                     ->end()
                 ->end()
             ->end();
