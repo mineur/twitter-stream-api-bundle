@@ -1,0 +1,11 @@
+services:
+  #
+  # Twitter Auth Configuration
+  #
+  twitter_stream_api:
+    class: Mineur\TwitterStreamApi
+    arguments:
+      - '%twitter.consumer_key%'
+      - '%twitter.consumer_secret%'
+      - '%twitter.access_token%'
+      - '%twitter.access_token_secret%'
