@@ -1,0 +1,31 @@
+{
+    "name": "mineur/twitter-stream-api-bundle",
+    "description": "A bundle integration of Mineur twitter stream api for Symfony",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Casajuana",
+            "email": "alexcm.14@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1",
+        "symfony/config": "~2.3|~3.0",
+        "symfony/http-kernel": "~2.3|~3.0",
+        "symfony/http-foundation": "^3.0",
+        "symfony/dependency-injection": "~2.3|~3.0",
+        "mineur/twitter-stream-api": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.1",
+        "symfony/var-dumper": "^3.2",
+        "mockery/mockery": "^0.9.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mineur\\TwitterStreamApiBundle\\": ""
+        }
+    }
+}
