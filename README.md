@@ -13,6 +13,7 @@ Register this bundle into your application kernel.
 
 ```php
 // app/AppKernel.php
+
 class AppKernel extends Kernel
 {
     public function registerBundles()
@@ -28,6 +29,7 @@ class AppKernel extends Kernel
 Then add your authentication keys on your config file:
 ```yaml
 # app/config/config.yml
+
 twitter_stream_api:
     twitter:
         consumer_key: '%your_consumer_key%'

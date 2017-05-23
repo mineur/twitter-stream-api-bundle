@@ -9,10 +9,10 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  * Class TwitterStreamApiConfiguration
  * @package DependencyInjection
  */
-class TwitterStreamApiConfiguration implements ConfigurationInterface
+class Configuration implements ConfigurationInterface
 {
     /**
-     * Get config tree builder
+     * Get configuration tree builder
      *
      * @return TreeBuilder
      */
