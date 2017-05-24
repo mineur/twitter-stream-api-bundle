@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
  * Class TwitterStreamApiExtension
  * @package Mineur\TwitterStreamApiBundle\DependencyInjection
  */
-class TwitterStreamApiExtension extends Extension
+class TwitterStreamApiClientExtension extends Extension
 {
     /**
      * @param array $configs
@@ -28,7 +28,7 @@ class TwitterStreamApiExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $def = $container->getDefinition('twitter_stream_api');
+        $def = $container->getDefinition('twitter_stream_api_client');
         $def->replaceArgument(0, $config['twitter']['consumer_key']);
         $def->replaceArgument(1, $config['twitter']['consumer_secret']);
         $def->replaceArgument(2, $config['twitter']['access_token']);
@@ -40,6 +40,6 @@ class TwitterStreamApiExtension extends Extension
      */
     public function getAlias()
     {
-        return 'twitter_stream_api';
+        return 'twitter_stream_api_client';
     }
 }

@@ -19,7 +19,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('twitter_stream_api');
+        $rootNode = $treeBuilder->root('twitter_stream_api_client');
 
         $rootNode
             ->children()

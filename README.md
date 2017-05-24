@@ -37,3 +37,21 @@ twitter_stream_api:
         access_token: '%your_access_token%'
         access_token_secret: '%your_access_token_secret%'
 ```
+
+## Simple usage
+```php
+// Controllers/DemoController.php
+
+class DemoController extends Controller
+{
+    public function consumeStreamAction()
+    {
+        // ...
+        $this
+            ->get('twitter_stream_api_consumer')
+            ->listenFor(['some', 'keywords'])
+            ->consume()
+        ;
+    }
+}
+```

@@ -1,11 +1,21 @@
 services:
+
   #
-  # Twitter Stream Auth Configuration
+  # TStream Client Configuration.
   #
-  twitter_stream_api:
-    class: Mineur\TwitterStreamApi\PublicStream
+  twitter_stream_api_client:
+    class: Mineur\TwitterStreamApi\Http\GuzzleStreamClient
     arguments:
       - '%consumer_key%'
       - '%consumer_secret%'
       - '%access_token%'
       - '%access_token_secret%'
+
+  #
+  # Stream Consumer
+  #
+  twitter_stream_api_consumer:
+    class: Mineur\TwitterStreamApi\PublicStream
+    factory: ['Mineur\TwitterStreamApi\PublicStream', open]
+    arguments:
+      - '@twitter_stream_api_client'
