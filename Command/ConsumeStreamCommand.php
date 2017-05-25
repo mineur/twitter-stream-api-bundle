@@ -75,10 +75,12 @@ class ConsumeStreamCommand extends Command
             ->getContainer()
             ->get('twitter_stream_api_consumer')
         ;
-        $publicStream
-            ->listenFor([ $input->getArgument('keywords') ])
-            ->consume()
-        ;
+        
+        dump(
+            $publicStream
+                ->listenFor([ $input->getArgument('keywords') ])
+                ->consume()
+        );
     }
 
     /**

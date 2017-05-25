@@ -1,5 +1,7 @@
 # Twitter Stream API Symfony Bundle
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)]()
+[![Latest Unstable Version](https://poser.pugx.org/mineur/twitter-stream-api-bundle/v/unstable)](https://packagist.org/packages/mineur/twitter-stream-api-bundle)
+[![Total Downloads](https://poser.pugx.org/mineur/twitter-stream-api-bundle/downloads)](https://packagist.org/packages/mineur/twitter-stream-api-bundle)
 
 A Symfony integration of Mineur Twitter Stream Library.
 
@@ -55,3 +57,6 @@ class DemoController extends Controller
     }
 }
 ```
+
+## Demonstration
+![](http://jmp.sh/T8uLZUt)
