@@ -58,5 +58,30 @@ class DemoController extends Controller
 }
 ```
 
-## Demonstration
-![](http://jmp.sh/T8uLZUt)
+## Command line actions
+For a simple usage, just type the next command on your terminal, followed by the comma-separated keywords you want to track:
+```php
+bin/console mineur:twitter-stream:consume hello,hola,aloha
+```
+And you will get an infinite loop of hydrated Tweet objects, similar to this one:
+```php
+Mineur\TwitterStreamApi\Tweet {#424
+  -text: "Hello twitter!"
+  -lang: "en"
+  -createdAt: "Thu May 25 18:48:05 +0000 2017"
+  -timestampMs: "1495738085984"
+  -geo: array:12 [
+    // ...
+  ]
+  -coordinates: array:14 [
+    // ...
+  ]
+  -places: null
+  -retweetCount: 236
+  -favoriteCount: 52
+  -user: array:38 [
+    "id" => 2605080321
+    // ...
+  ]
+}
+```
