@@ -40,30 +40,59 @@ twitter_stream_api:
         access_token_secret: '%your_access_token_secret%'
 ```
 
-## Simple usage
+## Simple custom command usage
 ```php
 // Controllers/DemoController.php
 
-class DemoController extends Controller
+class DemoCommand extends ContainerAwareCommand
 {
-    public function consumeStreamAction()
+    protected function configure()
     {
-        // ...
-        $this
-            ->get('twitter_stream_api_consumer')
-            ->listenFor(['some', 'keywords'])
-            ->consume()
-        ;
+        //...
+    }
+    
+    public function execute(InputInterface $input, OutputInterface $output)
+    {
+        /** @var PublicStream $publicStream */
+        $publicStream = $this
+            ->getContainer()
+            ->get('twitter_stream_api_consumer');
+        $publicStream
+            ->listenFor([
+                'your', 
+                'keywords', 
+                'list'
+            ])
+            ->setLanguage('es')
+            ->do(function(Tweet $tweet) {
+                // you can do whatever you want with this output
+                // prompt it, enqueue it, persist it into a database ...
+                $output->writeln($tweet);
+            });
     }
 }
 ```
+Check out the library for full customization of the public stream: 
+[twitter-stream-api](https://github.com/mineur/twitter-stream-api) 
 
 ## Command line actions
-For a simple usage, just type the next command on your terminal, followed by the comma-separated keywords you want to track:
+Tu use the pre-configured commands:
+* To prompt the stream feed on your terminal:
 ```php
 bin/console mineur:twitter-stream:consume hello,hola,aloha
 ```
-And you will get an infinite loop of hydrated Tweet objects, similar to this one:
+* To enqueue the stream output as a serialized objects in a FIFO Redis queue, 
+type the following:
+> This part is subject to RSQueue library and RSQueueBundle. I recommend you to 
+> check the [RSQueue documentation](https://github.com/rsqueue/RSQueueBundle) 
+> to consume the enqueued objects. 
+```php
+bin/console mineur:twitter-stream:enqueue hello,hola,aloha
+```
+
+## The Tweet output
+Consuming the stream will give you an infinite loop of hydrated Tweet objects, 
+similar to this one:
 ```php
 Mineur\TwitterStreamApi\Tweet {#424
   -text: "Hello twitter!"
