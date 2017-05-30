@@ -16,7 +16,9 @@
         "symfony/http-kernel": "~2.3|~3.0",
         "symfony/http-foundation": "^3.0",
         "symfony/dependency-injection": "~2.3|~3.0",
-        "mineur/twitter-stream-api": "dev-master"
+        "mineur/twitter-stream-api": "dev-master",
+        "rsqueue/rsqueue": "dev-master",
+        "rsqueue/rsqueue-bundle": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.1",

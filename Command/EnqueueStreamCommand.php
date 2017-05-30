@@ -15,15 +15,15 @@ use Symfony\Component\DependencyInjection\ContainerAwareTrait;
  * Class CreateUserCommand
  * @package Mineur\TwitterStreamApiBundle\Command
  */
-class ConsumeStreamCommand extends Command
+class EnqueueStreamCommand extends Command
 {
     use ContainerAwareTrait;
-    
+
     protected function configure()
     {
         $this
-            ->setName('mineur:twitter-stream:consume')
-            ->setDescription('Prompts a stream output in the console')
+            ->setName('mineur:twitter-stream:enqueue')
+            ->setDescription('Starts to consume the Twitter Streaming Api')
             ->setHelp('This command allows you to start an infinite loop to consume the Twitter Stream Api')
             ->addArgument(
                 'keywords',
@@ -42,7 +42,7 @@ class ConsumeStreamCommand extends Command
             )
         ;
     }
-    
+
     /**
      * @param InputInterface $input
      * @param OutputInterface $output
@@ -56,7 +56,7 @@ class ConsumeStreamCommand extends Command
         $output->writeln(
             AsciiArt::generate()
         );
-        
+    
         $output->writeln([
             '<comment>Keywords: </comment>'. $input->getArgument('keywords'),
             '<comment>Language: </comment>'. $input->getArgument('language'),
@@ -64,12 +64,13 @@ class ConsumeStreamCommand extends Command
             '',
             'Consuming stream ...'
         ]);
-        
+
         /** @var PublicStream $publicStream */
         $publicStream = $this
             ->getContainer()
             ->get('twitter_stream_api_consumer')
         ;
+    
         $publicStream
             ->listenFor([
                 $input->getArgument('keywords')
@@ -81,10 +82,13 @@ class ConsumeStreamCommand extends Command
                 $input->getArgument('userId')
             )
             ->do( function(Tweet $tweet) {
-                dump($tweet);
+                $this
+                    ->getContainer()
+                    ->get('rs_queue.producer')
+                    ->produce('tweets', $tweet->serialized());
             });
     }
-    
+
     /**
      * Get service container
      *
