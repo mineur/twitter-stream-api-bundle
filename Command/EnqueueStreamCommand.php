@@ -58,11 +58,22 @@ class EnqueueStreamCommand extends Command
         );
     
         $output->writeln([
-            '<comment>Keywords: </comment>'. $input->getArgument('keywords'),
-            '<comment>Language: </comment>'. $input->getArgument('language'),
-            '<comment>User ID:  </comment>'. $input->getArgument('userId'),
+            '<comment>Keywords: </comment>',
+            $this->generateFormattedList(
+                $input->getArgument('keywords')
+            ),
+            '<comment>Language: </comment>',
+            $this->generateFormattedList(
+                $input->getArgument('language')
+            ),
+            '<comment>User ID:  </comment>',
+            $this->generateFormattedList(
+                $input->getArgument('userId')
+            ),
             '',
-            'Consuming stream ...'
+            'Consuming stream ...',
+            '',
+            ''
         ]);
 
         /** @var PublicStream $publicStream */
@@ -78,9 +89,9 @@ class EnqueueStreamCommand extends Command
             ->setLanguage(
                 $input->getArgument('language')
             )
-            ->tweetedBy(
+            ->tweetedBy([
                 $input->getArgument('userId')
-            )
+            ])
             ->do( function(Tweet $tweet) {
                 $this
                     ->getContainer()
@@ -100,5 +111,24 @@ class EnqueueStreamCommand extends Command
             ->getApplication()
             ->getKernel()
             ->getContainer();
+    }
+    
+    /**
+     * @param $items
+     * @return string
+     */
+    private function generateFormattedList($items): string
+    {
+        if (empty($items)) {
+            return ' ~ ~ ~';
+        }
+        $itemsArray = explode(',', $items);
+        $itemsList = '';
+        
+        foreach ($itemsArray as $item) {
+            $itemsList .= ' - ' . trim($item) . PHP_EOL;
+        }
+        
+        return $itemsList;
     }
 }
