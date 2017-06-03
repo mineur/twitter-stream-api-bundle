@@ -5,6 +5,8 @@
 
 A Symfony integration of Mineur Twitter Stream Library.
 
+![](https://thumbs.gfycat.com/IcyImpossibleChrysomelid-size_restricted.gif)
+
 ## Installation
 ```php
 composer require mineur/twitter-stream-api-bundle:dev-master
