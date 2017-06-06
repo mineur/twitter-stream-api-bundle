@@ -2,9 +2,8 @@
 
 namespace Mineur\TwitterStreamApiBundle\Command;
 
-use Mineur\TwitterStreamApiBundle\Command\AsciiArt;
 use Mineur\TwitterStreamApi\PublicStream;
-use Mineur\TwitterStreamApi\Tweet;
+use Mineur\TwitterStreamApi\Model\Tweet;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -116,7 +115,7 @@ class ConsumeStreamCommand extends Command
     private function generateFormattedList($items): string
     {
         if (empty($items)) {
-            return ' ~ ~ ~';
+            return ' ~ ~ ~' . PHP_EOL;
         }
         $itemsArray = explode(',', $items);
         $itemsList = '';
