@@ -1,14 +1,24 @@
 <?php
 
+/*
+ * Mineur/twitter-stream-api-bundle package
+ *
+ * Feel free to contribute!
+ *
+ * @license MIT
+ * @author alexhoma <alexcm.14@gmail.com>
+ */
+
 namespace Mineur\TwitterStreamApiBundle\Command;
 
-use Mineur\TwitterStreamApi\PublicStream;
-use Mineur\TwitterStreamApi\Model\Tweet;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+
+use Mineur\TwitterStreamApi\Model\Tweet;
+use Mineur\TwitterStreamApi\PublicStream;
 
 /**
  * Class CreateUserCommand

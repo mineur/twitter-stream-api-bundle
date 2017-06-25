@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * Mineur/twitter-stream-api-bundle package
+ *
+ * Feel free to contribute!
+ *
+ * @license MIT
+ * @author alexhoma <alexcm.14@gmail.com>
+ */
+
 namespace Mineur\TwitterStreamApiBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
