@@ -89,7 +89,7 @@ type the following:
 > check the [RSQueue documentation](https://github.com/rsqueue/RSQueueBundle) 
 > to consume the enqueued objects. 
 ```php
-bin/console mineur:twitter-stream:enqueue hello,hola,aloha
+bin/console mineur:twitter-stream:enqueue
 ```
 
 ## The Tweet output
