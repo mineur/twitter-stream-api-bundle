@@ -102,6 +102,8 @@ class EnqueueStreamCommand extends Command
                 $input->getArgument('userId')
             ])
             ->do( function(Tweet $tweet) {
+                dump(' - Collected -> ' . $tweet->getId());
+                
                 $this
                     ->getContainer()
                     ->get('rs_queue.producer')
